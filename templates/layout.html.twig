@@ -1,0 +1,90 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>  
+    <!-- ***** Preloader End ***** -->
+    
+    <!-- Header -->
+    <header class="">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href="{{ path('index') }}"><h2>Red <em>Moustache</em></h2></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">{{ Usuario }}
+            {% if Usuario == "" %}
+              {% set page = app.request.attributes.get('_route') %}
+              <li class="nav-item {{ page=='index' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ path('index') }}">Home
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item {{ page=='servicios' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ path('servicios') }}">Servicios</a>
+              </li>
+              <li class="nav-item {{ page=='productos' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ path('productos') }}">Productos</a>      
+              </li>
+              <li class="nav-item {{ page=='nosotros' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ path('nosotros') }}">Nosotros</a>
+              </li>
+              <li class="nav-item {{ page=='contacta' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ path('contacta') }}">Contacto</a>
+              </li>   
+              <li class="nav-item {{ page=='login' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ path('login') }}">Iniciar Sesión</a>
+              </li>
+              {% else %}
+              {% set page = app.request.attributes.get('_route') %}
+              <li class="nav-item {{ page=='index' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ path('index') }}">Home
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item {{ page=='servicios' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ path('servicios') }}">Servicios</a>
+              </li>
+              <li class="nav-item {{ page=='productos' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ path('productos') }}">Productos</a>      
+              </li>
+              <li class="nav-item {{ page=='nosotros' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ path('nosotros') }}">Nosotros</a>
+              </li>
+              <li class="nav-item {{ page=='contacta' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ path('contacta') }}">Contacto</a>
+              </li>   
+              <li class="nav-item {{ page=='cuenta' ? 'active' : '' }}">
+                <a class="nav-link" href="{{ path('cuenta') }}">Cuenta</a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    {% block content %}{% endblock %}
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="inner-content">
+              <p>Copyright &copy; 2020 Sixteen Clothing Co., Ltd.
+            
+            - Design: <a rel="nofollow noopener" href="https://templatemo.com" target="_blank">TemplateMo</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+{% endblock %}

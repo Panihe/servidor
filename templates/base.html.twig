@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <title>RED MOUSTACHE</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset("bootstrap.min.css", "cssBootstrap") }}" rel="stylesheet">
+<!--
+
+TemplateMo 546 Sixteen Clothing
+
+https://templatemo.com/tm-546-sixteen-clothing
+
+-->
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{{ asset("fontawesome.css", "css") }}">
+    <link rel="stylesheet" href="{{ asset("templatemo-sixteen.css", "css") }}">
+    <link rel="stylesheet" href="{{ asset("owl.css", "css") }}">
+
+  </head>
+
+  <body>
+      {% block body %}{% endblock %}
+  </body>
+
+  
+  <!-- Bootstrap core JavaScript -->
+  <script src="{{ asset("jquery/jquery.min.js", "jsVendor") }}"></script>
+  <script src="{{ asset("bootsrap/js/bootstrap.bundle.min.js", "jsVendor") }}"></script>
+
+
+  <!-- Additional Scripts -->
+  <script src="{{ asset("custom.js", "js") }}"></script>
+  <script src="{{ asset("owl.js", "js") }}"></script>
+  <script src="{{ asset("slick.js", "js") }}"></script>
+  <script src="{{ asset("isotope.js", "js") }}"></script>
+  <script src="{{ asset("accordions.js", "js") }}"></script>
+
+
+  <script language = "text/Javascript"> 
+    cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+    function clearField(t){                   //declaring the array outside of the
+    if(! cleared[t.id]){                      // function makes it static and global
+          cleared[t.id] = 1;  // you could use true and false, but that's more typing
+          t.value='';         // with more chance of typos
+          t.style.color='#fff';
+          }
+      }
+    </script>
+</html>

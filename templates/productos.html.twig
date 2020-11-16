@@ -1,0 +1,77 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+    <!-- Page Content -->
+    <div class="page-heading products-heading header-text">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="text-content">
+              <h4>new arrivals</h4>
+              <h2>Red products</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="products">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="filters">
+              <ul>
+                  {% set currentYield = app.request.attributes.get("product") %}
+                  <li class="{{ currentYield=='Tazas' ? 'active' : '' }}"><a href="{{ path('productos',{ product : 'Tazas'}) }}" >Tazas</a></li>
+                  <li class="{{ currentYield=='Camisetas' ? 'active' : '' }}"><a href="{{ path('productos',{ product : 'Camisetas'}) }}" >Camisetas</a></li>
+                  <li class="{{ currentYield=='Bolsas' ? 'active' : '' }}"><a href="{{ path('productos',{ product : 'Bolsas'}) }}">Bolsas</a></li>
+                  <li class="{{ currentYield=='Libretas' ? 'active' : '' }}"><a href="{{ path('productos',{ product : 'Libretas'}) }}" >Libretas</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="filters-content">
+                <div class="row grid">
+                  {% set lowerLimit = (currentPage - 1) * itemsPerPage %}
+                  {% set upperLimit = currentPage * itemsPerPage + 1 %}
+                  {% for products in data %}
+                    {% if loop.index > lowerLimit and loop.index < upperLimit %}
+                      <div class="col-lg-4 col-md-4 all">
+                        <div class="product-item">
+                          <a href="#"><img src="{{ asset(products.getImagen, "imgProd") }}" alt=""></a>
+                          <div class="down-content">
+                            <a href="#"><h4>{{ products.getNombre | upper}}</h4></a>
+                            <h6>{{ products.getPrecio }}€</h6>
+                            <p>{{ products.getDescripcion }}</p>
+                            <ul class="stars">
+                              <li><i class="fa fa-star"></i></li>
+                              <li><i class="fa fa-star"></i></li>
+                              <li><i class="fa fa-star"></i></li>
+                              <li><i class="fa fa-star"></i></li>
+                              <li><i class="fa fa-star"></i></li>
+                            </ul>
+                            <span>{{ products.getRevisiones }}</span>
+                          </div>
+                        </div>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+
+                  {% set lastPage = (((data|length)/itemsPerPage)|round(0,'ceil')) %}
+                  {% set remainder = ((((data|length)/itemsPerPage)|round(0,'ceil'))*itemsPerPage-(data|length)) %}
+                </div>
+            </div>
+        </div>
+
+          <div class="col-md-12">
+            <ul class="pages">
+              {% for paginator in 1..lastPage %}
+                <li class="{{ currentPage == paginator ? 'active' : '' }}"><a href="{{ path('productos', {products : currentYield, currentPage : paginator}) }}">{{ paginator }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}
